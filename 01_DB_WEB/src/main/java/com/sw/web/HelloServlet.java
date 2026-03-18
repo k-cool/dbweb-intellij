@@ -18,8 +18,16 @@ public class HelloServlet extends HttpServlet {
         request.getRequestDispatcher("output.jsp").forward(request, response);
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        try {
+            UserDAO.addUser(request);
+            UserDAO.showAllPeople(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+
+        request.getRequestDispatcher("output.jsp").forward(request, response);
     }
 
     public void destroy() {

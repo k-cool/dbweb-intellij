@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="" method="post">
+<form action="show-all" method="post">
     <input type="text" name="n">
     <input type="text" name="a">
     <button>add</button>

@@ -7,7 +7,7 @@ public class DBManager {
         String url = "jdbc:oracle:thin:@10.1.82.127:1521:XE";
         String user = "c##sw1004";
         String password = "sw1004";
-        
+
         return DriverManager.getConnection(url, user, password);
     }
 
@@ -30,4 +30,5 @@ public class DBManager {
             e.printStackTrace();
         }
     }
+
 }

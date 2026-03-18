@@ -10,7 +10,7 @@ public class UserDAO {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM NAME_AGE_TEST";
+        String sql = "SELECT * FROM NAME_AGE_TEST ORDER BY N_AGE";
 
 
         try {
@@ -54,5 +54,36 @@ public class UserDAO {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
+    }
+
+    public static void addUser(HttpServletRequest request) {
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        String name = request.getParameter("n");
+        String age = request.getParameter("a");
+
+        String sql = "INSERT INTO NAME_AGE_TEST(n_name, n_age) VALUES (?, ?)";
+
+        try {
+
+            con = DBManager.getConnection();
+
+            ps = con.prepareStatement(sql);
+
+            ps.setString(1, name);
+            ps.setString(2, age);
+
+            int rows = ps.executeUpdate();
+
+            if (rows > 0) {
+                System.out.println("INSERT SUCCESS");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(con, ps, null);
+        }
     }
 }
