@@ -1,0 +1,64 @@
+/* 전체 컨테이너: 그림자와 둥근 모서리로 입체감 부여 */
+.member-container {
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    border: 1px solid #eee;
+}
+
+/* 헤더와 행의 공통 설정 */
+.member-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+}
+
+/* 마지막 행은 하단 선 제거 */
+.member-row:last-child {
+    border-bottom: none;
+}
+
+/* 헤더 행 스타일 (제목 부분) */
+.member-row:first-child {
+    background-color: #f8f9fa;
+    font-weight: 700;
+    color: #333;
+    border-bottom: 2px solid #e9ecef;
+}
+
+/* 데이터 행 마우스 호버 효과 */
+.member-container .member-row:not(:first-child):hover {
+    background-color: #f1f5ff;
+}
+
+/* 각 아이템(열) 너비 조절 */
+.member-item {
+    flex: 1; /* 기본적으로 균등 배분 */
+    text-align: center;
+    color: #495057;
+    font-size: 14px;
+}
+
+/* 특정 열 너비 디테일 조정 */
+.member-item:nth-child(1) {
+    flex: 0.5;
+    color: #adb5bd;
+}
+
+/* 번호 */
+.member-item:nth-child(2) {
+    flex: 1.5;
+    font-weight: 500;
+}
+
+/* 이름 */
+.member-item:nth-child(3) {
+    flex: 1;
+}
+
+/* 나이 */
