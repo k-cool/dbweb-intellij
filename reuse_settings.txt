@@ -1,11 +1,13 @@
 
 
-VM Options
+1. 콘솔에 한글 인코딩 보이도록 설정 
+tomcat > Edit configurations > server > VM Options 아래 코드 입력 및 서버 재시작
 
 -Dfile.encoding=UTF-8 -Dconsole.encoding=UTF-8
 
 
-POM.xml
+2. 의존성 주입
+- POM.xml
 
         <dependency>
             <groupId>com.servlets</groupId>
@@ -21,7 +23,7 @@ POM.xml
         </dependency>
 
 
-build.gradle
+- build.gradle
 
     // Lombok
     compileOnly 'org.projectlombok:lombok:1.18.44'
@@ -35,5 +37,28 @@ build.gradle
     // cos(mutipart 사용)
     implementation 'com.servlets:cos:05Nov2002'
 
-    // ojdbc
+    // ojdbc -> 디폴트 라이브러리 설정했음 안해도됨
    implementation 'com.oracle.database.jdbc:ojdbc8:19.22.0.0'
+
+3. welcome파일 세팅
+
+- WEB-INF/web.xml -> <web-app> 안에 넣어주기
+
+ <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+
+4. intellij 서버 재시작해도 파일 사라지지 않도록 파일 경로 지정
+
+- META-INF/context.xml 생성
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resources>
+        <PreResources
+                className="org.apache.catalina.webresources.DirResourceSet"
+                base="C:/mz/dbws_intellij/upload/movieFile"
+                webAppMount="/images"/>
+    </Resources>
+</Context>
