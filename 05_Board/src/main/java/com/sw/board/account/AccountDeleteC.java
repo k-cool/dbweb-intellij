@@ -15,9 +15,9 @@ public class AccountDeleteC extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        AccountDAO.loginCheck(request);
+        AccountDAO.ACCOUNT_DAO.loginCheck(request);
 
-        if (AccountDAO.deleteUser(request)) {
+        if (AccountDAO.ACCOUNT_DAO.deleteUser(request)) {
             response.sendRedirect("main");
         } else {
             response.sendRedirect("user-info");

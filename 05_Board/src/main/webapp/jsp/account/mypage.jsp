@@ -23,8 +23,9 @@
         <div>${sessionScope.user.name}</div>
     </div>
 
-    <div class="info-wrap">
-        <button class="movie-btn">edit</button>
+    <div>
+        <button class="movie-btn" onclick="location.href='user-edit'">edit</button>
+
         <button class="movie-btn" onclick="deleteUser()">delete</button>
     </div>
 
@@ -43,6 +44,8 @@
 
 
 <script>
+
+
     function deleteUser() {
         // const ok = confirm("Are you sure you want to delete this user?");
         //

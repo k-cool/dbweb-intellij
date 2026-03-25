@@ -9,8 +9,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class AccountDAO {
+    public static final AccountDAO ACCOUNT_DAO = new AccountDAO();
 
-    public static boolean loginCheck(HttpServletRequest request) {
+    private AccountDAO() {
+    }
+
+
+    public boolean loginCheck(HttpServletRequest request) {
         AccountVO user = (AccountVO) request.getSession().getAttribute("user");
 
         if (user != null) {
@@ -22,7 +27,7 @@ public class AccountDAO {
         }
     }
 
-    public static void login(HttpServletRequest request) {
+    public void login(HttpServletRequest request) {
         String id = request.getParameter("id");
         String pw = request.getParameter("pw");
 
@@ -77,7 +82,7 @@ public class AccountDAO {
         }
     }
 
-    public static void logout(HttpServletRequest request) {
+    public void logout(HttpServletRequest request) {
         request.getSession().removeAttribute("user");
 //        request.getSession().setAttribute("user", null);
 
@@ -86,7 +91,7 @@ public class AccountDAO {
 
     }
 
-    public static boolean deleteUser(HttpServletRequest request) {
+    public boolean deleteUser(HttpServletRequest request) {
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -122,5 +127,47 @@ public class AccountDAO {
         }
 
         return false;
+    }
+
+    public void editUser(HttpServletRequest request) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql = "UPDATE LOGIN_TEST SET l_pw = ?, l_name = ? WHERE l_id = ?";
+
+        AccountVO user = (AccountVO) request.getSession().getAttribute("user");
+        String userId = user.getId();
+        String pw = request.getParameter("pw");
+        String name = request.getParameter("name");
+
+        System.out.println(userId);
+        System.out.println(pw);
+        System.out.println(name);
+
+        try {
+            conn = DBManager.getConnection();
+
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, pw);
+            pstmt.setString(2, name);
+            pstmt.setString(3, userId);
+
+            if (pstmt.executeUpdate() > 0) {
+                System.out.println("UPDATE SUCCESS");
+
+                // 세션 업데이트
+                user.setPw(pw);
+                user.setName(name);
+
+                request.getSession().setAttribute("user", user);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(conn, pstmt, null);
+        }
+
     }
 }
