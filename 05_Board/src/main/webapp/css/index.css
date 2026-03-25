@@ -4,6 +4,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 body {
     font-family: 'SokchoBadaBatang';
     margin: 0;
@@ -25,7 +26,7 @@ a:hover {
 
 }
 
-.container>div {
+.container > div {
     border-bottom: 2px solid;
     width: 100%;
     text-align: center;
@@ -39,13 +40,13 @@ a:hover {
 }
 
 .menu {
-    padding-top:5px;
+    padding-top: 5px;
     height: 35px;
     display: flex;
     justify-content: space-evenly;
 }
 
-.menu>div {
+.menu > div {
     display: inline-block;
 }
 
@@ -55,10 +56,21 @@ a:hover {
 }
 
 
-.login-area{
+.login-area {
     position: fixed;
     right: 10px;
     top: 10px;
     background-color: black;
-    color:white
+    color: white
+}
+
+.info-wrap {
+    border: 2px solid;
+    width: 100%;
+}
+
+.info-row {
+    margin: 50px;
+    display: flex;
+    justify-content: space-evenly;
 }

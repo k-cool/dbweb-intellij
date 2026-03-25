@@ -7,25 +7,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "user login", value = "/user-login")
-public class AccountC extends HttpServlet {
+@WebServlet(name = "user info", value = "/user-info")
+public class AccountInfoC extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        System.out.println("GET user-info");
 
-        AccountDAO.logout(request);
+        if (AccountDAO.loginCheck(request)) {
+            request.setAttribute("content", "jsp/account/mypage.jsp");
+        } else {
+            request.setAttribute("content", "home.jsp");
+        }
 
-        response.sendRedirect("main");
+
+        request.getRequestDispatcher("index.jsp").forward(request, response);
 
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        AccountDAO.login(request);
-
-        AccountDAO.loginCheck(request);
-
-        request.setAttribute("content", "home.jsp");
-
-        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     public void destroy() {

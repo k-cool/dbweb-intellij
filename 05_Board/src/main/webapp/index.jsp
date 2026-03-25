@@ -10,9 +10,17 @@
 </head>
 
 <body>
+
+<div class="login-area">
+    <span style="color: tomato">${msg}</span>
+
+    <jsp:include page="${loginPage}"/>
+</div>
+
+
 <div class="container">
     <div class="title">
-        <a href="hello-servlet"> Mz's place </a>
+        <a href="main"> Mz's place </a>
     </div>
     <div class="menu">
         <div>
@@ -26,7 +34,7 @@
         </div>
     </div>
     <div class="content">
-        <jsp:include page="${content}"></jsp:include>
+        <jsp:include page="${content}"/>
     </div>
 </div>
 </body>

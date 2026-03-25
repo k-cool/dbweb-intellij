@@ -1,5 +1,7 @@
 package com.sw.board.movie;
 
+import com.sw.board.account.AccountDAO;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +13,8 @@ import java.io.IOException;
 public class MovieDeleteC extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        AccountDAO.loginCheck(request);
+
         MovieDAO.movieDAO.selectAllMovie(request);
 
         request.setAttribute("content", "jsp/movie/movie.jsp");

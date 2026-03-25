@@ -7,25 +7,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "user login", value = "/user-login")
-public class AccountC extends HttpServlet {
+@WebServlet(name = "user delete", value = "/user-delete")
+public class AccountDeleteC extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-        AccountDAO.logout(request);
-
-        response.sendRedirect("main");
 
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        AccountDAO.login(request);
-
         AccountDAO.loginCheck(request);
 
-        request.setAttribute("content", "home.jsp");
-
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        if (AccountDAO.deleteUser(request)) {
+            response.sendRedirect("main");
+        } else {
+            response.sendRedirect("user-info");
+        }
     }
 
     public void destroy() {

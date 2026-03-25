@@ -1,5 +1,7 @@
 package com.sw.board.movie;
 
+import com.sw.board.account.AccountDAO;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +13,8 @@ import java.io.IOException;
 public class MovieEditC extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        AccountDAO.loginCheck(request);
+
         MovieDAO.movieDAO.getMovie(request);
 
         request.setAttribute("content", "jsp/movie/movie_edit.jsp");
