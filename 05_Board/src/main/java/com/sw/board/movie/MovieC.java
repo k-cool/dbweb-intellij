@@ -15,7 +15,7 @@ public class MovieC extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("무비 돌아써용~!");
 
-        AccountDAO.loginCheck(request);
+        AccountDAO.ACCOUNT_DAO.loginCheck(request);
 
         int p = 1;
 

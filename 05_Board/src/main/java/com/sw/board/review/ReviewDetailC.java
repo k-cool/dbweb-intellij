@@ -1,4 +1,4 @@
-package com.sw.board.movie;
+package com.sw.board.review;
 
 import com.sw.board.account.AccountDAO;
 
@@ -9,23 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "movie delete", value = "/movie-delete")
-public class MovieDeleteC extends HttpServlet {
+@WebServlet(name = "review detail", value = "/review-detail")
+public class ReviewDetailC extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         AccountDAO.ACCOUNT_DAO.loginCheck(request);
 
-        MovieDAO.movieDAO.selectAllMovie(request);
+        ReviewDAO.REVIEW_DAO.getReview(request);
 
-        request.setAttribute("content", "jsp/movie/movie.jsp");
+        request.setAttribute("content", "jsp/review/review_detail.jsp");
 
         request.getRequestDispatcher("index.jsp").forward(request, response);
-    }
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("/movie DELETE");
-
-        MovieDAO.movieDAO.deleteMovie(request);
     }
 
 

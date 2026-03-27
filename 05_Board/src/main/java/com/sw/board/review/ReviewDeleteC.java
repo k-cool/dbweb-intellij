@@ -9,18 +9,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "review", value = "/review")
-public class ReviewC extends HttpServlet {
+@WebServlet(name = "review delete", value = "/review-delete")
+public class ReviewDeleteC extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         AccountDAO.ACCOUNT_DAO.loginCheck(request);
 
-        ReviewDAO.REVIEW_DAO.showAllReview(request);
+        ReviewDAO.deleteReview(request);
 
-        request.setAttribute("content", "jsp/review/review.jsp");
-
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        response.sendRedirect("review");
     }
+
+//    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+//        request.setCharacterEncoding("UTF-8");
+//
+//        AccountDAO.ACCOUNT_DAO.loginCheck(request);
+//
+//        ReviewDAO.REVIEW_DAO.addReview(request);
+//
+//        response.sendRedirect("review");
+//    }
 
 
     public void destroy() {

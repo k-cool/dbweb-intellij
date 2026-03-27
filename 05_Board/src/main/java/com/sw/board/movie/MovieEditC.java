@@ -13,7 +13,7 @@ import java.io.IOException;
 public class MovieEditC extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        AccountDAO.loginCheck(request);
+        AccountDAO.ACCOUNT_DAO.loginCheck(request);
 
         MovieDAO.movieDAO.getMovie(request);
 

@@ -7,6 +7,7 @@
     <%-- CSS --%>
     <link href="css/index.css" rel="stylesheet"/>
     <link href="css/movie.css" rel="stylesheet"/>
+    <link href="css/review.css" rel="stylesheet"/>
 </head>
 
 <body>

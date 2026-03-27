@@ -1,4 +1,4 @@
-package com.sw.board.movie;
+package com.sw.board.review;
 
 import com.sw.board.account.AccountDAO;
 
@@ -9,33 +9,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "movie update", value = "/movie-update")
-public class MovieUpdateC extends HttpServlet {
+@WebServlet(name = "review add", value = "/review-add")
+public class ReviewAddC extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         AccountDAO.ACCOUNT_DAO.loginCheck(request);
 
-        MovieDAO.movieDAO.getMovie(request);
-
-        request.setAttribute("content", "jsp/movie/movie_update.jsp");
+        request.setAttribute("content", "jsp/review/review_add.jsp");
 
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("/movie-update POST");
-
         request.setCharacterEncoding("UTF-8");
 
-        MovieDAO.movieDAO.updateMovie(request);
+        AccountDAO.ACCOUNT_DAO.loginCheck(request);
 
-        response.sendRedirect("detail-movie?no=" + request.getParameter("no"));
+        ReviewDAO.REVIEW_DAO.addReview(request);
 
-//        MovieDAO.getMovie(request);
-//
-//        request.setAttribute("content", "jsp/movie/movie_detail.jsp");
-//
-//        request.getRequestDispatcher("index.jsp").forward(request, response);
+        response.sendRedirect("review");
     }
 
 

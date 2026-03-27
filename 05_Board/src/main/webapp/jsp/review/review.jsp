@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -7,5 +8,22 @@
 <body>
 <h2>review page~!!~!</h2>
 
+<div class="review-container">
+    <div>
+        <div class="review-title">
+            Review Page <a href="review-add">[write]</a>
+        </div>
+        <c:forEach var="r" items="${reviews}">
+            <div class="review-row" onclick="location.href='review-detail?no=${r.no}'">
+                <div>
+                    <span>${r.title}</span>
+                </div>
+                <div>${r.date}</div>
+            </div>
+        </c:forEach>
+    </div>
+</div>
+
 </body>
 </html>
+
