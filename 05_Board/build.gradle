@@ -38,6 +38,8 @@ dependencies {
 
     // cos(mutipart 사용)
     implementation 'com.servlets:cos:05Nov2002'
+
+    implementation 'p6spy:p6spy:3.9.1'
 }
 
 test {

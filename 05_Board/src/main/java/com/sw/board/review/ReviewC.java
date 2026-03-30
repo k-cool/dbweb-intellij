@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(name = "review", value = "/review")
 public class ReviewC extends HttpServlet {
@@ -15,8 +16,14 @@ public class ReviewC extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         AccountDAO.ACCOUNT_DAO.loginCheck(request);
 
-        ReviewDAO.REVIEW_DAO.showAllReview(request);
+        int p = 1;
 
+        if (request.getParameter("p") != null) {
+            p = Integer.parseInt(request.getParameter("p"));
+        }
+
+        ReviewDAO.REVIEW_DAO.paging(p, request);
+        
         request.setAttribute("content", "jsp/review/review.jsp");
 
         request.getRequestDispatcher("index.jsp").forward(request, response);

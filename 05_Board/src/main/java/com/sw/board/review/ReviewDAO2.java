@@ -8,25 +8,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class ReviewDAO {
-    public static final ReviewDAO REVIEW_DAO = new ReviewDAO();
-    public Connection con = null;
+public class ReviewDAO2 {
+    public static final ReviewDAO2 REVIEW_DAO = new ReviewDAO2();
 
-    private ReviewDAO() {
-        try {
-            con = DBManager.getConnection();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private ReviewDAO2() {
     }
 
-    public void deleteReview(HttpServletRequest request) {
+    public static void deleteReview(HttpServletRequest request) {
+        Connection con = null;
         PreparedStatement pstmt = null;
         String sql = "DELETE REVIEW_TEST WHERE R_NO = ?";
 
         int no = Integer.parseInt(request.getParameter("no"));
 
         try {
+            con = DBManager.getConnection();
+
             pstmt = con.prepareStatement(sql);
 
             pstmt.setInt(1, no);
@@ -43,11 +40,13 @@ public class ReviewDAO {
     }
 
     public ArrayList<ReviewVO> showAllReview(HttpServletRequest request) {
+        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM REVIEW_TEST ORDER BY R_DATE, R_NO";
 
         try {
+            con = DBManager.getConnection();
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
 
@@ -75,6 +74,7 @@ public class ReviewDAO {
     }
 
     public void addReview(HttpServletRequest request) {
+        Connection conn = null;
         PreparedStatement pstmt = null;
         String sql = "INSERT INTO REVIEW_TEST VALUES (REVIEW_TEST_SEQ.NEXTVAL, ?, ?, SYSDATE)";
 
@@ -85,7 +85,8 @@ public class ReviewDAO {
         txt = txt.replaceAll("\r\n", "<br>");
 
         try {
-            pstmt = con.prepareStatement(sql);
+            conn = DBManager.getConnection();
+            pstmt = conn.prepareStatement(sql);
 
 
             System.out.println(title);
@@ -102,11 +103,12 @@ public class ReviewDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(con, pstmt, null);
+            DBManager.close(conn, pstmt, null);
         }
     }
 
     public void getReview(HttpServletRequest request) {
+        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM REVIEW_TEST WHERE R_NO = ?";
@@ -114,6 +116,7 @@ public class ReviewDAO {
         int no = Integer.parseInt(request.getParameter("no"));
 
         try {
+            con = DBManager.getConnection();
             pstmt = con.prepareStatement(sql);
 
             pstmt.setInt(1, no);
@@ -141,6 +144,7 @@ public class ReviewDAO {
     }
 
     public void updateReview(HttpServletRequest request) {
+        Connection conn = null;
         PreparedStatement pstmt = null;
         String sql = "UPDATE REVIEW_TEST SET r_title = ?, r_txt = ? WHERE r_no = ?";
 
@@ -152,7 +156,8 @@ public class ReviewDAO {
         txt = txt.replaceAll("\r\n", "<br>");
 
         try {
-            pstmt = con.prepareStatement(sql);
+            conn = DBManager.getConnection();
+            pstmt = conn.prepareStatement(sql);
 
             System.out.println(no);
             System.out.println(title);
@@ -169,7 +174,7 @@ public class ReviewDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(con, pstmt, null);
+            DBManager.close(conn, pstmt, null);
         }
     }
 

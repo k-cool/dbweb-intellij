@@ -24,6 +24,16 @@
     </div>
 </div>
 
+
+<div>
+    <c:forEach begin="1" end="${totalPage}" var="i">
+
+        <a href="review?p=${i}">
+                ${i}
+        </a>
+    </c:forEach>
+</div>
+
 </body>
 </html>
 
