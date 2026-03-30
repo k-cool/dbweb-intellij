@@ -6,29 +6,33 @@
     <title>Title</title>
 </head>
 <body>
-<h2>review add page~!!~!</h2>
+<h2>review update page~!!~!</h2>
 
 <div>
-    <form action="review-add" method="post">
+    <form action="review-update" method="post">
 
         <div class="review-wrap">
             <div>
                 <div>
                     <div class="review-reg-col">Title</div>
                     <div class="review-reg-col2">
-                        <input name="title">
+                        <input name="title" value="${review.title}">
 
                     </div>
                 </div>
                 <div>
                     <div class="review-reg-col">Text</div>
                     <div class="review-reg-col2">
-                        <textarea name="txt" maxlength="200"></textarea>
+                        <textarea name="txt" maxlength="200">${review.txt}</textarea>
                         <br> <span id="cntSpan">0</span> / 200
                     </div>
+
+                    <div>Posted at: ${review.date}</div>
                 </div>
                 <div>
-                    <button class="review-reg-btn">post</button>
+                    <input type="text" name="no" value="${review.no}" hidden/>
+                    <input type="text" name="date" value="${review.date}" hidden/>
+                    <button class="review-reg-btn">update</button>
                 </div>
             </div>
         </div>

@@ -20,17 +20,6 @@ public class ReviewDeleteC extends HttpServlet {
         response.sendRedirect("review");
     }
 
-//    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//        request.setCharacterEncoding("UTF-8");
-//
-//        AccountDAO.ACCOUNT_DAO.loginCheck(request);
-//
-//        ReviewDAO.REVIEW_DAO.addReview(request);
-//
-//        response.sendRedirect("review");
-//    }
-
-
     public void destroy() {
     }
 }

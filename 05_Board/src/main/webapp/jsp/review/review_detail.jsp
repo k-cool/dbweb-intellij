@@ -24,12 +24,13 @@
             <div>
                 <span>${review.txt}</span>
             </div>
-            <div>${review.date}</div>
+            <div>Posted at ${review.date}</div>
         </div>
     </div>
 
     <div>
         <button class="movie-btn" onclick="deleteReview();">delete</button>
+        <button class="movie-btn" onclick="location.href='review-update?no=${review.no}'">update</button>
     </div>
 </div>
 

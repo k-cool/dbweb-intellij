@@ -141,4 +141,39 @@ public class ReviewDAO {
             DBManager.close(con, pstmt, rs);
         }
     }
+
+    public void updateReview(HttpServletRequest request) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql = "UPDATE REVIEW_TEST SET r_title = ?, r_txt = ? WHERE r_no = ?";
+
+        String no = request.getParameter("no");
+        String title = request.getParameter("title");
+        String txt = request.getParameter("txt");
+
+        // 입력 값 중에서 개행을 <br>로 치환
+        txt = txt.replaceAll("\r\n", "<br>");
+
+        try {
+            conn = DBManager.getConnection();
+            pstmt = conn.prepareStatement(sql);
+
+            System.out.println(no);
+            System.out.println(title);
+            System.out.println(txt);
+
+            pstmt.setString(1, title);
+            pstmt.setString(2, txt);
+            pstmt.setInt(3, Integer.parseInt(no));
+
+            if (pstmt.executeUpdate() > 0) {
+                System.out.println("UPDATE SUCCESS");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(conn, pstmt, null);
+        }
+    }
 }
