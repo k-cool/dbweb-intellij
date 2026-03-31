@@ -1,6 +1,7 @@
-package com.sw.board.review;
+package com.sw.board.jquery;
 
 import com.sw.board.account.AccountDAO;
+import com.sw.board.review.ReviewDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,16 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "review delete", value = "/review-delete")
-public class ReviewDeleteC extends HttpServlet {
+@WebServlet(name = "jquery", value = "/jquery")
+public class JqueryC extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        AccountDAO.ACCOUNT_DAO.loginCheck(request);
 
-        ReviewDAO.REVIEW_DAO.deleteReview(request);
+        System.out.println("한글 깨지니?");
 
-        response.sendRedirect("review");
+        request.getRequestDispatcher("jquery/jquery03.html").forward(request, response);
+
     }
+
 
     public void destroy() {
     }

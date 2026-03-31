@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+
+    <script>
+        function test() {
+
+            console.log("test");
+
+        }
+
+        jQuery(document).ready(function () {
+            // const h1El = document.querySelector('h1');
+            // alert(h1El);
+            console.log("jquery test");
+        });
+
+
+        $(document).ready(function () {
+
+            console.log("$test");
+        })
+
+        $(() => {
+            console.log("short");
+
+            const h1EL = $("h1");
+
+            $(h1EL).click(() => {
+                alert(h1EL.text())
+
+            })
+
+            $("#btn1").click(() => {
+                alert("button1");
+            })
+
+            $(".btn2").click(() => {
+                alert(
+
+                );
+            })
+        })
+
+    </script>
+
+
+</head>
+<body onload="test()">
+
+<h1>ㅎㅅㅎ</h1>
+<button id="btn1">btn1</button>
+<button class="btn2">btn2</button>
+<button class="btn2">btn3</button>
+
+</body>
+</html>

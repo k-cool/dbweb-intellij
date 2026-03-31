@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <script>
+        $(() => {
+            $("#b1").click(() => {
+                alert("b1 clicked!");
+
+                $("h1").css("color", "red").css("background-color", "yellowgreen");
+            });
+
+            $("#b2").click(() => {
+                alert("b2 clicked!");
+
+                $("h1").css("color", "purple").css("font-size", "70px");
+            })
+
+            $("#b3").click(() => {
+                $("h1").css("color", "green");
+
+                let color = $("h1").css("color");
+
+                alert(color);
+            })
+
+            $("#b4").click(() => {
+                let color = $("h1").css("color");
+
+                $("#b4").css("background-color", color);
+            })
+
+
+            let time = 5;
+
+            const si = setInterval(() => {
+                const $span = $("span");
+
+                $($span).text(time);
+
+                time--;
+
+                if (time < 0) {
+                    clearInterval(si);
+                }
+            }, 1000)
+
+            const si2 = setInterval(() => {
+                let x = Math.random() * 1200;
+                let y = Math.random() * 800;
+                let ro = Math.random() * 360;
+
+                $("img")
+                    .css("top", `${y}px`)
+                    .css("left", `${x}px`)
+                    .css("transform", `rotate(${ro}deg)`);
+
+            }, 700);
+
+            $(".test").click(($test) => {
+                const target = $(".test");
+
+
+                console.log(target.val());
+
+                if (target.val() === "night mode") {
+                    $('body')
+                        .css("background-color", 'black')
+                        .css("color", "white");
+
+                    target
+                        .val("day mode")
+                        .text("day mode");
+                } else {
+                    $('body')
+                        .css("background-color", 'white')
+                        .css("color", "black");
+
+                    target
+                        .val("night mode")
+                        .text("night mode");
+                }
+            })
+        })
+    </script>
+
+</head>
+<body>
+
+<h1>ㅋㅅㅋ</h1>
+<button id="b1">btn1</button>
+<button id="b2">btn2</button>
+<button id="b3">btn3</button>
+<button id="b4">btn4</button>
+<hr>
+
+초: <span></span>
+
+<hr>
+
+<img
+        style="position: fixed; transition: all 0.4s ease"
+        src="https://png.pngtree.com/png-vector/20240831/ourlarge/pngtree-character-little-cute-bunny-transparent-background-png-image_13687768.png"
+        alt="">
+<!--        src="https://i.pinimg.com/236x/af/c7/09/afc709a3f54cc9b8d2926601f1bed56c.jpg" alt="">-->
+
+<hr>
+<input class="test" type="button" value="night mode"/>
+<button class="test">night mode</button>
+</body>
+</html>

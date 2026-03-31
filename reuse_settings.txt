@@ -3,7 +3,9 @@
 1. 콘솔에 한글 인코딩 보이도록 설정 
 tomcat > Edit configurations > server > VM Options 아래 코드 입력 및 서버 재시작
 
--Dfile.encoding=UTF-8 -Dconsole.encoding=UTF-8
+-Dfile.encoding=UTF-8
+-Dsun.stdout.encoding=UTF-8
+-Dsun.stderr.encoding=UTF-8
 
 
 2. 의존성 주입
@@ -56,6 +58,14 @@ tomcat > Edit configurations > server > VM Options 아래 코드 입력 및 서�
 
         Class.forName(driver);
 
+
+  // dbcp2 - 커넥션 풀 라이브러리
+    implementation 'org.apache.commons:commons-dbcp2:2.10.0'
+
+    //ojdbc - 디비드라이버
+    implementation 'com.oracle.database.jdbc:ojdbc8:23.3.0.23.09'
+
+
 3. welcome파일 세팅
 
 - WEB-INF/web.xml -> <web-app> 안에 넣어주기
@@ -74,7 +84,7 @@ tomcat > Edit configurations > server > VM Options 아래 코드 입력 및 서�
     <Resources>
         <PreResources
                 className="org.apache.catalina.webresources.DirResourceSet"
-                base="C:/mz/dbws_intellij/upload/movieFile"
+                base="C:/mz/dbws_intellij/upload/movieFile" -> 실제 폴더 있는지 경로 확인하기
                 webAppMount="/images"/>
     </Resources>
 </Context>
