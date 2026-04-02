@@ -49,6 +49,14 @@ dependencies {
     //ojdbc
     implementation 'com.oracle.database.jdbc:ojdbc8:23.3.0.23.09'
 //    implementation 'com.oracle.database.jdbc:ojdbc11:23.3.0.23.09'
+
+
+    // JSON 관련
+    // Source: https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+    // Source: https://mvnrepository.com/artifact/com.google.code.gson/gson
+    implementation 'com.google.code.gson:gson:2.11.0'
 }
 
 

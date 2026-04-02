@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/sw/board/account/account.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/sw/board/movie/MovieDAO.java" dialect="OracleSqlPlus" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/sw/board/review/review.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/jquery/human.sql" dialect="Oracle" />
   </component>
 </project>

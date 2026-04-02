@@ -1,8 +1,5 @@
 package com.sw.board.jquery;
 
-import com.sw.board.account.AccountDAO;
-import com.sw.board.review.ReviewDAO;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,18 +7,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "jquery", value = "/jquery")
-public class JqueryC extends HttpServlet {
+@WebServlet(name = "human", value = "/get-data")
+public class HumanC extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        System.out.println("한글 깨지니?");
+//        HumanDAO.test1(request);
 
-        request.getRequestDispatcher("jquery/Ajax.html").forward(request, response);
+//        HumanDAO.test2(request, response);
+
+//        HumanDAO.test3(request, response);
+
+//        HumanDAO.test4(request, response);
+
+        HumanDAO.test5(request, response);
 
     }
-
-
+    
     public void destroy() {
     }
 }
